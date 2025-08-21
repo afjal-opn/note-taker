@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NoteForm from './components/NoteForm';
 import NotesList from './components/NotesList';
+import Sidebar from './components/Sidebar';
 
 function App() {
   const [notes, setNotes] = useState<string[]>([]);
@@ -10,10 +11,13 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4">Note Taker</h1>
-      <NoteForm onAddNote={addNoteHandler} />
-      <NotesList notes={notes} />
+    <div className="flex min-h-screen bg-gray-100">
+      <Sidebar />
+      <div className="flex-1 p-4">
+        <h1 className="text-2xl font-bold mb-4">Note Taker</h1>
+        <NoteForm onAddNote={addNoteHandler} />
+        <NotesList notes={notes} />
+      </div>
     </div>
   );
 }
